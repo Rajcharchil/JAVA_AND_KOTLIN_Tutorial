@@ -1,0 +1,335 @@
+// Write a program to reverse a string in Java.
+
+
+public class StringReverse {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        StringBuilder sb = new StringBuilder(str);
+        System.out.println(sb.reverse().toString());
+    }
+}
+
+
+
+
+// 2. Write a program to find the largest number in an array in Java.
+
+public class LargestNumber {
+    public static void main(String[] args) {
+        int[] nums = {1, 5, 3, 9, 7};
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+            }
+        }
+        System.out.println("Largest number: " + max);
+    }
+}
+
+
+
+
+// 3. Write a program to check if a given number is prime in Java.
+
+public class PrimeNumber {
+    public static void main(String[] args) {
+        int num = 7;
+        boolean isPrime = true;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            System.out.println(num + " is a prime number.");
+        } else {
+            System.out.println(num + " is not a prime number.");
+        }
+    }
+}
+
+
+
+// 4. Write a program to find the factorial of a given number in Java.
+
+public class Factorial {
+    public static void main(String[] args) {
+        int num = 5;
+        int fact = 1;
+        for (int i = 1; i <= num; i++) {
+            fact *= i;
+        }
+        System.out.println("Factorial of " + num + " is " + fact);
+    }
+}
+
+
+
+
+
+
+// 5. Write a program to remove duplicate elements from an array in Java.
+
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 1, 2, 4, 5};
+        Set<Integer> set = new LinkedHashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        Integer[] result = set.toArray(new Integer[set.size()]);
+        System.out.println(Arrays.toString(result));
+    }
+}
+
+
+
+
+// 6. Write a program to find the second largest number in an array in Java.
+
+public class SecondLargestNumber {
+    public static void main(String[] args) {
+        int[] nums = {1, 5, 3, 9, 7};
+        int max = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > max) {
+                secondMax = max;
+                max = nums[i];
+            } else if (nums[i] > secondMax && nums[i] != max) {
+                secondMax = nums[i];
+            }
+        }
+        System.out.println("Second largest number: " + secondMax);
+    }
+}
+
+
+
+// 7. Write a program to check if two strings are anagrams in Java.
+
+import java.util.Arrays;
+public class AnagramCheck {
+    public static void main(String[] args) {
+        String str1 = "silent";
+        String str2 = "listen";
+        char[] arr1 = str1.toCharArray();
+        char[] arr2 = str2.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        if (Arrays.equals(arr1, arr2)) {
+            System.out.println(str1 + " and " + str2 + " are anagrams.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not anagrams.");
+        }
+    }
+}
+
+
+
+
+// 8. Write a program to reverse a linked list in Java.
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+public class LinkedListReverse {
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+        head = prev;
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
+}
+
+
+
+
+// 9. Write a program to find the first non-repeating character in a string in Java.
+
+public class NonRepeatingChar {
+    public static void main(String[] args) {
+        String str = "leetcode";
+        int[] freq = new int[26];
+        for (int i = 0; i < str.length(); i++) {
+            freq[str.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if (freq[str.charAt(i) - 'a'] == 1) {
+                System.out.println("First non-repeating character: " + str.charAt(i));
+                return;
+            }
+        }
+        System.out.println("There are no non-repeating characters in the string.");
+    }
+}
+
+
+
+
+
+
+// 10. Write a program to check if a given string is a palindrome in Java.
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        String str = "racecar";
+        int i = 0;
+        int j = str.length() - 1;
+        while (i < j) {
+            if (str.charAt(i) != str.charAt(j)) {
+                System.out.println(str + " is not a palindrome.");
+                return;
+            }
+            i++;
+            j--;
+        }
+        System.out.println(str + " is a palindrome.");
+
+
+
+
+
+
+// 11. Write a program to find the minimum number of coins needed to make change for a given amount in Java.
+
+public class CoinChange {
+    public static void main(String[] args) {
+        int[] coins = {1, 5, 10, 25};
+        int amount = 30;
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (i >= coins[j]) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        System.out.println("Minimum number of coins needed: " + dp[amount]);
+    }
+}
+
+
+
+
+// 12. Write a program to find the intersection of two linked lists in Java.
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+public class LinkedListIntersection {
+    public static void main(String[] args) {
+        ListNode headA = new ListNode(4);
+        headA.next = new ListNode(1);
+        headA.next.next = new ListNode(8);
+        headA.next.next.next = new ListNode(4);
+        headA.next.next.next.next = new ListNode(5);
+        ListNode headB = new ListNode(5);
+        headB.next = new ListNode(0);
+        headB.next.next = new ListNode(1);
+        headB.next.next.next = headA.next.next;
+        ListNode ptrA = headA;
+        ListNode ptrB = headB;
+        while (ptrA != ptrB) {
+            ptrA = ptrA == null ? headB : ptrA.next;
+            ptrB = ptrB == null ? headA : ptrB.next;
+        }
+        System.out.println("Intersection node: " + ptrA.val);
+    }
+}
+
+
+
+
+// 13. Write a program to find the maximum sum subarray in an array in Java.
+
+public class MaxSubarraySum {
+    public static void main(String[] args) {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int maxSum = Integer.MIN_VALUE;
+        int currSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            currSum += nums[i];
+            if (currSum > maxSum) {
+                maxSum = currSum;
+            }
+            if (currSum < 0) {
+                currSum = 0;
+            }
+        }
+        System.out.println("Maximum sum subarray: " + maxSum);
+    }
+}
+
+
+
+
+// 14. Write a program to find the nth Fibonacci number in Java.
+
+public class Fibonacci {
+    public static void main(String[] args) {
+        int n = 10;
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        System.out.println("The " + n + "th Fibonacci number: " + dp[n]);
+    }
+}
+
+
+
+
+// 15. How do you swap two numbers without using a third variable in Java?
+
+b = b + a; // now b is sum of both the numbers
+a = b - a; // b - a = (b + a) - a = b (a is swapped)
+b = b - a; // (b + a) - b = a (b is swapped)
+
+
+
+
+// 16. Write a Java program to check if a vowel is present in a string.
+
+public class StringContainsVowels {
+
+ public static void main(String[] args) {
+  System.out.println(stringContainsVowels("Hello")); // true
+  System.out.println(stringContainsVowels("TV")); // false
+ }
+
+ public static boolean stringContainsVowels(String input) {
+  return input.toLowerCase().matches(".*[aeiou].*");
+ }
+
+}
